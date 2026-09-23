@@ -14,7 +14,7 @@
 提交信息使用简短英文，建议采用 Conventional Commits：
 
 ```text
-feat(network): add session discovery
+feat(battle): add formation command queue
 fix(player): correct spawn position
 art(character): import soldier animations
 chore(ci): add Unity repository checks
@@ -41,7 +41,7 @@ chore(ci): add Unity repository checks
 - 场景和 Prefab 尽量拆小，减少多人同时编辑同一文件。
 - 开始编辑共享场景前，在团队频道明确占用，完成并推送后释放。
 - 优先在 Prefab Mode 中修改 Prefab，避免在同一场景中长时间并行编辑。
-- 合并 Scene 或 Prefab 前，先确认本地已安装 Unity SmartMerge，并执行 `.\Tools\Git\Setup-Git.ps1`。
+- 合并 Scene 或 Prefab 前，先确认本地已安装 Unity SmartMerge，并执行 `.\Tools\Git\Setup-Git.ps1`（macOS 和 Linux 用 `sh Tools/Git/setup-git.sh`）。脚本找不到 Unity 安装位置时，先设置 `UNITY_YAML_MERGE` 指向 `UnityYAMLMerge`（Windows 为 `UnityYAMLMerge.exe`）再重跑。
 - 对自动合并结果必须回到 Unity 中逐项检查，不能只以 Git 无冲突为完成标准。
 
 ## Git LFS
@@ -51,6 +51,8 @@ chore(ci): add Unity repository checks
 ```powershell
 git lfs install
 ```
+
+仓库根目录的 `Tools/Git/Setup-Git.ps1`（Windows）和 `Tools/Git/setup-git.sh`（macOS、Linux）会帮你执行 `git lfs install --local` 并配置 Unity SmartMerge。
 
 图片、音频、视频、模型、字体、压缩包和原生插件按根目录 `.gitattributes` 中的规则进入 Git LFS。
 
@@ -65,9 +67,12 @@ git lfs migrate import --include="Assets/**/*.fbx,Assets/**/*.png,Assets/**/*.wa
 ## 禁止提交
 
 ```text
-Library/  Temp/  Logs/  UserSettings/  Build/  Builds/
-.vs/  .idea/  *.csproj  *.sln  *.user  *.apk  *.aab
+Library/  Temp/  Logs/  UserSettings/  MemoryCaptures/  Recordings/
+Build/  Builds/  obj/  .gradle/  .vs/  .idea/
+*.csproj  *.sln  *.user  *.apk  *.aab
 ```
+
+前两行对应 CI 的生成目录检查（大小写不敏感），被拦下来的路径必须从提交中移除，而不是加进 `.gitignore` 了事。
 
 提交前至少确认：
 
@@ -76,6 +81,8 @@ git status --short
 git diff --cached --stat
 python Tools/ci/check_unity_repo.py
 ```
+
+校验脚本需要 Python 3.9 或更高版本（CI 使用 3.12），它会检查：必需文件存在、生成目录未被提交、`Assets/**` 与 `.meta` 一一对应、二进制扩展名已配置 LFS、超过 5 MB 的普通 Git 文件已交给 LFS，以及文本文件里的合并冲突标记。
 
 ## 发布
 

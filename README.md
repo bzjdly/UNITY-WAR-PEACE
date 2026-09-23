@@ -1,6 +1,6 @@
 # WAR-PEACE
 
-Unity 多人协作项目。仓库只保存可复现的项目源文件，Unity 生成的缓存、构建产物和个人编辑器配置不进入版本库。
+Unity 多人协作开发的项目。仓库只保存可复现的项目源文件，Unity 生成的缓存、构建产物和个人编辑器配置不进入版本库。
 
 ## 开发环境
 
@@ -9,12 +9,21 @@ Unity 多人协作项目。仓库只保存可复现的项目源文件，Unity �
 - 默认分支：`main`
 - 包源：`https://packages.unity.cn`
 
-首次拉取仓库后，在仓库根目录执行：
+首次拉取仓库后，在仓库根目录执行脚本，它会启用 Git LFS 并配置 Unity SmartMerge：
 
 ```powershell
 git lfs install
 .\Tools\Git\Setup-Git.ps1
 ```
+
+```sh
+git lfs install
+sh Tools/Git/setup-git.sh
+```
+
+Windows 用 PowerShell 脚本，macOS 和 Linux 用 shell 脚本。脚本找不到 Unity 安装位置时，可以先设置 `UNITY_YAML_MERGE` 环境变量指向 `UnityYAMLMerge`（Windows 为 `UnityYAMLMerge.exe`）再运行。
+
+Unity 编辑器版本以 `ProjectSettings/ProjectVersion.txt` 为准（当前为 `2022.3.57f1c2`）；文中其他地方出现的版本号只是说明。
 
 然后通过 Unity Hub 使用项目文件中记录的 Unity 版本打开此目录。
 
@@ -37,7 +46,7 @@ git lfs install
 1. 设计问题先登记在 `docs/设计问答.md`；得到明确答复后**先回填 `大纲.md`**，再在问答条目上标注状态和回填位置。
 2. `大纲.md` 区分“当前共识 / 暂定方向 / 待决定”，未确认内容不得写入共识段落。
 3. `docs/代码框架设计.md` 只写模块、契约、状态归属和数据流，不写具体 C# 实现；实现细节以代码为准。
-4. 每份文档头部保留元信息（版本、状态、最后更新、依据），修改时同步更新。
+4. 设计类文档（`大纲.md`、`docs/设计问答.md`、`docs/代码框架设计.md`）头部保留元信息（版本、状态、最后更新、依据），修改时同步更新；协作类文档不强制。
 5. 文档与代码之间、文档彼此之间出现矛盾时按缺陷处理，随相关 PR 一起修正。
 
 ## 协作流程
@@ -70,7 +79,9 @@ docs/github-workflow
 
 不得提交：
 
-- `Library/`、`Temp/`、`Logs/`、`UserSettings/`
-- IDE 生成的 `*.csproj`、`*.sln`、`.vs/`
-- 构建目录和 Unity 崩溃报告
-- 未配置 Git LFS 的大体积二进制资产
+- Unity 生成目录：`Library/`、`Temp/`、`Logs/`、`UserSettings/`、`MemoryCaptures/`、`Recordings/`
+- 构建与工具产物：`Build/`、`Builds/`、`obj/`、`.gradle/`
+- IDE 生成内容：`*.csproj`、`*.sln`、`*.user`、`.vs/`、`.idea/`
+- Unity 崩溃报告和未配置 Git LFS 的大体积二进制资产
+
+完整清单和 CI 实际拦截的目录见 [CONTRIBUTING.md](CONTRIBUTING.md) 的“禁止提交”一节。
