@@ -36,12 +36,14 @@ body:
     attributes:
       label: 模块
       options:
-        - Gameplay
-        - Network
-        - UI / UX
-        - Art / Animation
-        - Audio
-        - Tools / Build
-        - Documentation
+        - 战斗 Battle
+        - 战略与地图 Strategic
+        - 城镇与经济 Economy
+        - 势力与外交 Factions
+        - 数据与内容 Content
+        - 表现与界面 Presentation
+        - 工具与构建 Tools
+        - 测试 Testing
+        - 文档 Documentation
     validations:
       required: true

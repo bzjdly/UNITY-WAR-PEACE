@@ -1,5 +1,5 @@
 name: 缺陷报告
-description: 报告可以复现的 Unity 或联机问题
+description: 报告可以复现的编辑器、构建或运行时问题
 title: "[Bug] "
 labels:
   - bug
@@ -52,12 +52,10 @@ body:
       multiple: true
       options:
         - Editor / Play Mode
-        - Windows
-        - macOS
-        - Android
-        - iOS
-        - Dedicated Server
-        - Host / Client 联机
+        - Windows 构建（首版目标平台）
+        - macOS 构建
+        - Linux 构建
+        - 其他平台（请在描述中说明）
     validations:
       required: true
   - type: textarea

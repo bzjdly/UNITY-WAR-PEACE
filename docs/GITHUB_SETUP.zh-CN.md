@@ -57,15 +57,18 @@ Backlog -> Ready -> In Progress -> In Review -> QA -> Done
 
 | 标签 | 用途 |
 | --- | --- |
-| `bug` | 可复现的缺陷 |
-| `enhancement` | 功能请求 |
-| `task` | 开发、美术或工具任务 |
-| `network` | 联机和同步 |
+| `bug` | 可复现的缺陷（“缺陷报告”模板自动应用） |
+| `enhancement` | 功能建议（“功能建议”模板自动应用） |
+| `task` | 开发、美术、测试或工具任务（“开发任务”模板自动应用） |
+| `triage` | 新建 Issue 待分流，由负责分流的人在确认内容后移除（“缺陷报告”和“功能建议”模板自动应用） |
 | `gameplay` | 核心玩法 |
 | `art` | 美术和动画 |
+| `network` | 联机和同步。当前设计为纯单机，此标签暂时保留备用 |
 | `blocked` | 有明确外部阻塞 |
 | `good first issue` | 适合新成员 |
 | `priority:high` | 高优先级 |
+
+Issue 模板会自动应用上表中的标签，请先在仓库 `Settings > Labels` 中确认存在同名标签，否则模板不会带上它们。
 
 Issue 标题保持可搜索，PR 通过 `Closes #123` 自动关联。
 
