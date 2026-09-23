@@ -1,0 +1,52 @@
+name: 开发任务
+description: 记录边界明确的开发、美术、测试或技术任务
+title: "[Task] "
+labels:
+  - task
+body:
+  - type: input
+    id: objective
+    attributes:
+      label: 任务目标
+      description: 用一句话说明最终要交付什么。
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 范围
+      description: 包含什么、不包含什么。
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 完成标准
+      description: 每一项都要能被检查或测试。
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 模块
+      options:
+        - Gameplay
+        - Network
+        - UI / UX
+        - Art / Animation
+        - Audio
+        - Tools / Build
+        - Testing
+        - Documentation
+    validations:
+      required: true
+  - type: input
+    id: dependencies
+    attributes:
+      label: 依赖或阻塞
+      description: 没有则填写“无”。
+    validations:
+      required: true
