@@ -36,10 +36,11 @@ Unity 编辑器版本以 `ProjectSettings/ProjectVersion.txt` 为准（当前为
 | [大纲.md](大纲.md) | 游戏整体设计：当前共识、暂定方向和待决定事项 | 全员 | v0.16 |
 | [docs/设计问答.md](docs/设计问答.md) | 设计问答追踪：按依赖顺序提问、记录状态、回填大纲 | 制作人、设计 | Q01-Q16 |
 | [docs/代码框架设计.md](docs/代码框架设计.md) | 代码架构基线：模块、契约、状态归属、数据流和实施顺序 | 程序 | v0.1 |
+| [docs/待决问题清单.md](docs/待决问题清单.md) | 待决问题索引：所有未定问题、出处和建议的问答顺序 | 制作人、设计 | v0.1 |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | 分支、提交、PR、Unity 资源和 LFS 规则 | 全员 | — |
 | [docs/GITHUB_SETUP.zh-CN.md](docs/GITHUB_SETUP.zh-CN.md) | 仓库权限、分支保护、Issue、标签和 CI 设置 | 维护者 | — |
 
-建议阅读顺序：`大纲.md` → `docs/设计问答.md`（先看哪些还没定）→ `docs/代码框架设计.md`（程序）→ `CONTRIBUTING.md`。
+建议阅读顺序：`大纲.md` → `docs/待决问题清单.md`（还有哪些没定）→ `docs/设计问答.md`（当前在问什么）→ `docs/代码框架设计.md`（程序）→ `CONTRIBUTING.md`。
 
 文档维护规则：
 
@@ -48,6 +49,7 @@ Unity 编辑器版本以 `ProjectSettings/ProjectVersion.txt` 为准（当前为
 3. `docs/代码框架设计.md` 只写模块、契约、状态归属和数据流，不写具体 C# 实现；实现细节以代码为准。
 4. 设计类文档（`大纲.md`、`docs/设计问答.md`、`docs/代码框架设计.md`）头部保留元信息（版本、状态、最后更新、依据），修改时同步更新；协作类文档不强制。
 5. 文档与代码之间、文档彼此之间出现矛盾时按缺陷处理，随相关 PR 一起修正。
+6. `docs/待决问题清单.md` 是派生索引：只汇总未定问题和出处，不产生新结论；问答状态或大纲变化时同步更新。
 
 ## 协作流程
 
