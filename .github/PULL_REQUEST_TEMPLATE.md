@@ -16,11 +16,17 @@
 
 - [ ] Unity 能无编译错误地打开并进入 Play Mode
 - [ ] 已运行相关 EditMode / PlayMode 测试
+- [ ] 已运行 `python Tools/ci/check_unity_repo.py` 且通过
 - [ ] 已检查新增或移动资源的 `.meta`
 - [ ] 已确认没有提交 `Library`、`Temp`、`Logs`、`UserSettings` 或构建产物
 - [ ] 涉及场景或 Prefab 时，已检查自动合并结果和运行时行为
+- [ ] 改动涉及设计内容时，已同步 `大纲.md` 或 `docs/设计问答.md`
 
 验证记录：
+
+## 未验证事项
+
+<!-- 哪些内容无法本地验证、需要人工检查或在其他机器上复现？没有就写“无”。 -->
 
 ## 风险与回滚
 
