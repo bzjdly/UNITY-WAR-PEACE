@@ -50,8 +50,8 @@ git lfs install
 分支命名示例：
 
 ```text
-feature/network-session
-fix/sync-transform
+feature/battle-formation-command
+fix/formation-selection
 art/character-animation
 tools/build-pipeline
 docs/github-workflow

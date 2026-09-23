@@ -29,10 +29,10 @@ chore(ci): add Unity repository checks
 - 关联的 Issue 或明确目标
 - 改动范围和实现方式
 - 本地验证步骤与结果
-- 场景、Prefab、ScriptableObject 或网络协议的影响说明
+- 场景、Prefab、ScriptableObject 或内容数据的影响说明
 - 无法验证或仍需人工检查的事项
 
-至少一名其他成员完成审查后才能合并。涉及网络协议、存档格式或公共接口的改动必须由对应模块负责人审查。
+至少一名其他成员完成审查后才能合并。涉及存档格式、内容 ID 或公共接口的改动必须由对应模块负责人审查。
 
 ## Unity 资源规则
 
